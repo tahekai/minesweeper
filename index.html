@@ -1,0 +1,57 @@
+<html class="index">
+    <head>
+        <meta charset="utf-8"> 
+        <title> Tähe-Kai Tillo </title>
+        <link rel="stylesheet" href="style.css">
+        <script src="logic.js"></script>
+        
+         <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <center>
+                    <h1>MINESWEEPER</h1>
+                    <p>Tähe-Kai Tillo - 154849</p>
+                    <p></p>
+                    <p>Vali väljaku suurus</p>
+                        <select id="grid">
+                            <option value="6">6x6</option>
+                            <option value="9">9x9</option>
+                            <option value="16">16x16</option>
+                        </select>
+                    <p>Vali pommide arv</p>
+                        <form>
+                            <input type="number" step="1" id="numOfMines" min="1" max="255">
+                        </form>
+                    <button onclick="makeBoard(); draw(); neighbours(); red(); ">Alusta mängu</button>
+                    <button onclick="reload();">Lõpeta mäng</button>
+                </center>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="game">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <table id="gameBoard" border="1"></table>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+       
+        
+        
+        
+      
+      
+    </body>
+</html>

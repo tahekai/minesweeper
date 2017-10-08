@@ -1,0 +1,47 @@
+.br {
+    border: black solid 1px;
+}
+
+table {
+    position: absolute; 
+}
+
+td { 
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-color: #e6e6e6;
+    border: 2px solid #acacac;
+    width: 40px !important;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+td:hover {
+    opacity: 0.3;
+}
+
+.header {
+    height:300px;
+}
+
+.game {
+    position: relative;
+}
+
+.footer {
+    height:50px;
+}
+
+#gameBoard {
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, 0);
+}
+
+.bombs {
+    color: #ff0000 !important;
+}
+
