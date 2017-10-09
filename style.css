@@ -3,18 +3,21 @@
 }
 
 table {
-    position: absolute; 
+    
+    width: 100%
 }
+
+tr{
+height: 40px;}
 
 td { 
     background-size: 40px;
     background-repeat: no-repeat;
-    background-color: #e6e6e6;
-    border: 2px solid #acacac;
-    width: 40px !important;
-    height: 40px;
+    background-color: #eafdff;
+    border: 2px solid #7acdf8;
     text-align: center;
     cursor: pointer;
+    max-width = 40px !important;
 }
 
 td:hover {
@@ -39,6 +42,7 @@ td:hover {
         left: 50%;
         margin-right: -50%;
         transform: translate(-50%, 0);
+    
 }
 
 .bombs {
