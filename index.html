@@ -34,7 +34,7 @@
                         <form>
                             <input type="number" step="1" id="numOfMines" min="1" max="255">
                         </form>
-                    <button onclick="createTable(); neighbours(); ">Alusta mängu</button>
+                    <button onclick="makeBoard(); createTable();">Alusta mängu</button>
                     <button onclick="reload();">Lõpeta mäng</button>
                 </center>
             </div>
@@ -42,12 +42,15 @@
         </div>
         
         <div class="game">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+               
                 <table id="gameBoard" border="1"></table>
+               
             </div>
-            <div class="col-sm-2"></div>
+            <div class="col-sm-4"></div>
         </div>
+        <div id="msg"></div>
        
         
         

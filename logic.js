@@ -3,6 +3,9 @@
 
 var size;
 var bombs;
+var board = [];
+var moves;
+
 
 <!--LAUA MASSIIV JA POMMID-->
 
@@ -11,8 +14,12 @@ var bombs;
 // NB! This algorithm may become slow if the nr of bombs is close to
 // the board area (i.e. almost all the board covered with bombs)
 //
+
 function createTable() {
     
+    document.getElementById("gameBoard").innerHTML = "";
+    moves = 0;
+    document.getElementById("msg").innerHTML = "";
     size = document.getElementById('grid').value;
     bombs = document.getElementById('numOfMines').value;
     makeBoard(size, bombs);
@@ -23,12 +30,12 @@ function createTable() {
     var table = document.createElement('table');
     table.setAttribute("id", "table");
     var tableBody = document.createElement('tbody');
-    for (var i = 0; i < parseInt(size,10); i++){
+    for (var x = 0; x < parseInt(size,10); x++){
         var tableRow = document.createElement('tr');
         var board=[];
-        for (var j = 0; j < parseInt(size,10); j++){
+        for (var y = 0; y < parseInt(size,10); y++){
             var tableCell = document.createElement('td');
-            tableCell.id = i + "_" + j;
+            tableCell.id = x + "_" + y;
             tableCell.addEventListener("click", clickCell);
             tableRow.appendChild(tableCell);
         }
@@ -37,28 +44,52 @@ function createTable() {
     }
     table.appendChild(tableBody);
     place.appendChild(table);
+    //place.innerHTML = table;
     //tableCell.addEventListener("click", clickCell);
 }
 
 function clickCell(cell) {
+    moves++;
+    document.getElementById("msg").innerHTML = moves;
     var clickedCell = cell.target.id;
     var x = clickedCell.substring(0,clickedCell.search("_"));
     var y = clickedCell.substring(clickedCell.search("_")+1);
-    console.log(x, y);
-    openCell(x, y);
-}
-
-function openCell(x, y) {
     document.getElementById(x+"_"+y).setAttribute("style", "background-color: white");
-    console.log(neighbours(size, x, y)); 
-    console.log("vajutasid " + x + ", " + y)
+    console.log("Sinu käik: " + x +  " ja " + y);
+    console.log(neighbours(size, x, y));
+    var z = neighbours(size, x, y);
+    console.log(countBombs(z));
+    makeMove(x, y);
 }
 
+function makeMove(x, y) {
+    
+    if (board[x][y] == 0){
+        console.log("ei ole pomm");
+        var z = neighbours(size, x, y);
+        console.log(countBombs(z));
+        document.getElementById(x + "_" + y ).innerHTML = countBombs(z);
+        
+    }
+    else if (board[x][y] == 1) {
+        console.log("astusid pommi otsa");
+        for (var i = 0; i < size; i++ ){
+            for (var j = 0; j < size; j++){
+                if (board[i][j] ==1){
+                   document.getElementById(i + "_" + j ).setAttribute("class", "pomm"); 
+                }
+            }
+        }
+        
+        document.getElementById("msg").innerHTML = "Kaotus, käike tegid: " + moves;
+        
+    }
+}
 
 function makeBoard(size,bombs) {
-  var board = [];
+  //var board = [];
   
-  console.log("makeboard");
+  //console.log("makeboard");
   
   if (bombs>=size*size) throw "too many bombs for this size";
   if (bombs == "")  throw "missing amount of bombs";
@@ -73,24 +104,23 @@ function makeBoard(size,bombs) {
   var i=bombs;
   while (i>0) {
     // generate random x and y in range 0...size-1
-    x=Math.floor(Math.random() * size);
-    y=Math.floor(Math.random() * size);
+    var x=Math.floor(Math.random() * size);
+    var y=Math.floor(Math.random() * size);
     // put bomb on x,y unless there is a bomb already
     if (board[x][y]!=1) {
       board[x][y]=1;
       i--; // bomb successfully positioned, one less to go
-      console.log("positioned "+x+", "+y+" yet to go "+i);
+      console.log("positioned "+x+", "+y+" yet to go "+i); 
     }
-   
-  }
-  
+  }  
   return board;
-  console.log("board array" + board);
 }
 
 
-function neighbours(size,x,y) {
-  var list=[];
+function neighbours(size,y,x) {
+x = parseInt(x);
+y = parseInt(y);    
+var list=[];
   for (var i=-1; i<=1; i++) {    
     for (var j=-1; j<=1; j++) {
       // square is not a neighbour of itself
@@ -102,8 +132,24 @@ function neighbours(size,x,y) {
     }
   }
   return list;
-  console.log(list);
+  
 }  
+
+function countBombs(array) {
+    
+    var totBombs = 0;
+    for (var i = 0; i < array.length; i++){
+         //console.log(array[i][1]+ "_" + array[i][0]);
+        if (board[array[i][1]][array[i][0]] == 1)
+        {
+            totBombs++;
+        }
+    }
+    return totBombs;
+}
+
+
+
 
 function reload() {
     window.location.reload();
@@ -131,11 +177,3 @@ function reload() {
     }
 }
 */
-
-
-
-
-
-
-
-
