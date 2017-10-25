@@ -1,61 +1,44 @@
 <html class="index">
     <head>
         <meta charset="utf-8"> 
-        <title> Tähe-Kai Tillo </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Minesweeper </title>
         <link rel="stylesheet" href="style.css">
         <script src="logic.js"></script>
-        
-         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
 
     <body>
-        <div class="header">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
+        <div class="left">
+            <div class="left1">
                 <center>
-                    <h1>MINESWEEPER</h1>
-                    <p>Tähe-Kai Tillo - 154849</p>
-                    <p></p>
-                    <p>Vali väljaku suurus</p>
-                        <select id="grid">
-                            <option value="6">6x6</option>
-                            <option value="9">9x9</option>
-                            <option value="16">16x16</option>
-                        </select>
-                    <p>Vali pommide arv</p>
-                        <form>
-                            <input type="number" step="1" id="numOfMines" min="1" max="255">
-                        </form>
-                    <button onclick="makeBoard(); createTable();">Alusta mängu</button>
-                    <button onclick="reload();">Lõpeta mäng</button>
+                    <h1 style="font-size:3vw;">MINESWEEPER</h1>
+                    <p>Tähe-Kai Tillo</p>
+                    <p>154849</p>
+                    <p style="margin-top: 20px;">Vali väljaku suurus</p>
+                    <select id="grid">
+                        <option value="6">6x6</option>
+                        <option value="9">9x9</option>
+                        <option value="16">16x16</option>
+                    </select>
+                    <p style="margin-top: 20px;">Vali pommide arv</p>
+                    <form>
+                        <input type="number" step="1" id="numOfMines" min="1" max="255">
+                    </form>
+                    <!--<form>
+                        <input type="test"  id="nimi" placegolder="nimi">
+                    </form>
+                    <button onclick="saveGame();">Salvesta seis</button>-->
+                    <button onclick="alusta();" style="margin-top: 20px;">Alusta mängu</button>
+                    <p style="margin-top: 20px;">Sinu tulemus</p>
+                    <p id="msg" ></p>
                 </center>
             </div>
-            <div class="col-sm-4"></div>
         </div>
-        
-        <div class="game">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-               
-                <table id="gameBoard" border="1"></table>
-               
-            </div>
-            <div class="col-sm-4"></div>
+        <div class="main">
+            <center>
+                <div id="gameBoard" ></div>
+            </center>
         </div>
-        <div id="msg"></div>
-       
-        
-        
-        
-      
-      
     </body>
 </html>
